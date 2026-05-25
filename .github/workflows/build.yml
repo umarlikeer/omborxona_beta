@@ -1,0 +1,53 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Kodni yuklab olish
+        uses: actions/checkout@v3
+
+      - name: Python o'rnatish
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Java o'rnatish
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Tizim paketlarini o'rnatish
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git zip unzip autoconf libtool pkg-config \
+            libncurses5-dev libncursesw5-dev libtinfo5 \
+            cmake libffi-dev libssl-dev \
+            python3-pip build-essential \
+            libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev \
+            libsdl2-ttf-dev libportmidi-dev libswscale-dev \
+            libavformat-dev libavcodec-dev
+
+      - name: Buildozer o'rnatish
+        run: |
+          pip install --upgrade pip
+          pip install buildozer cython
+
+      - name: APK build qilish
+        run: |
+          buildozer -v android debug
+
+      - name: APK faylini saqlash
+        uses: actions/upload-artifact@v3
+        with:
+          name: omborxona-debug-apk
+          path: bin/*.apk
+          retention-days: 30
