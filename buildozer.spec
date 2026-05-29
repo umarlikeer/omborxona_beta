@@ -6,7 +6,8 @@ source.dir = .
 source.include_exts = py,png,jpg,jpeg,kv,atlas,db
 version = 0.1
 
-requirements = python3,kivy==2.3.0,kivymd==1.1.1,pillow,plyer,sqlite3
+requirements = python3,kivy==2.3.0,kivymd==1.1.1,pillow,plyer
+android.accept_sdk_license = True
 
 orientation = portrait
 fullscreen = 0

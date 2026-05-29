@@ -1,4 +1,5 @@
-name: Build Android APK
+name: APK build
+run: yes | buildozer android debug
 
 on:
   push:
