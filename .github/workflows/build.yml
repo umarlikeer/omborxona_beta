@@ -13,7 +13,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.10'
 
       - uses: actions/setup-java@v4
         with:
@@ -24,35 +24,23 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            git zip unzip autoconf libtool pkg-config wget \
+            git zip unzip autoconf libtool pkg-config \
             libncurses5-dev libncursesw5-dev cmake \
             libffi-dev libssl-dev python3-pip python3-dev \
-            build-essential zlib1g-dev lld ccache
+            build-essential zlib1g-dev
 
-      - name: Buildozer va Cython
+      - name: Buildozer
         run: |
-          pip3 install --upgrade pip
-          pip3 install Cython==0.29.33 buildozer==1.5.0
-
-      - name: SDK litsenziyalari qabul qilish
-        run: |
-          yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager \
-            --licenses || true
-          /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager \
-            "build-tools;33.0.2" "platforms;android-33" "platform-tools" || true
+          pip install --upgrade pip setuptools wheel
+          pip install Cython==0.29.33 buildozer==1.5.0
 
       - uses: actions/cache@v4
         with:
           path: ~/.buildozer
-          key: ${{ runner.os }}-buildozer-v5
+          key: buildozer-${{ runner.os }}-v1
 
       - name: APK build
-        env:
-          ANDROIDSDK: /usr/local/lib/android/sdk
-          ANDROIDNDK: /usr/local/lib/android/sdk/ndk/27.3.13750724
-          ANDROIDAPI: "33"
-          ANDROIDMINAPI: "21"
-        run: buildozer android debug
+        run: buildozer -v android debug
 
       - uses: actions/upload-artifact@v4
         with:
