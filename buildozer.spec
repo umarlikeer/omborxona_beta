@@ -11,10 +11,11 @@ version = 0.1
 requirements = python3, kivy==2.2.1, kivymd, plyer
 
 # 2-MUHIM O'ZGARISH: NDK va API mosligini ta'minlash
+# Android API versiyalarini to'g'rilang
 android.api = 33
-android.minapi = 21
+android.minapi = 24
 android.ndk = 25b
-android.ndk_api = 21
+android.ndk_api = 24
 
 orientation = portrait
 fullscreen = 0
