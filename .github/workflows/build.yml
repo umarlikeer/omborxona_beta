@@ -20,35 +20,50 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Paketlar
+      - name: Tizim paketlari
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            git zip unzip autoconf libtool pkg-config \
+            git zip unzip autoconf libtool pkg-config wget \
             libncurses5-dev libncursesw5-dev cmake \
             libffi-dev libssl-dev python3-pip python3-dev \
             build-essential zlib1g-dev lld ccache
 
-      - name: Buildozer
+      - name: Buildozer va Cython
         run: |
           pip3 install --upgrade pip
           pip3 install Cython==0.29.33 buildozer==1.5.0
 
-      - name: Android litsenziyalarni qabul qilish
+      - name: Android SDK oldindan o'rnatish
         run: |
-          mkdir -p $HOME/.buildozer/android/platform/android-sdk/licenses
+          SDK=$HOME/.buildozer/android/platform/android-sdk
+          mkdir -p $SDK
+
+          # sdkmanager yuklab o'rnatish
+          wget -q https://dl.google.com/android/repository/commandlinetools-linux-6514223_latest.zip \
+            -O /tmp/cmdtools.zip
+          unzip -q /tmp/cmdtools.zip -d $SDK
+
+          # Litsenziyalarni qabul qilish
+          mkdir -p $SDK/licenses
           printf '\n24333f8a63b6825ea9c5514f83c2829b004d1fee\nd56f5187479451eabf01fb78af6dfcb131a6481e\n' \
-            > $HOME/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
+            > $SDK/licenses/android-sdk-license
           printf '\n84831b9409646a918e30573bab4c9c91346d8abd\n' \
-            > $HOME/.buildozer/android/platform/android-sdk/licenses/android-sdk-preview-license
+            > $SDK/licenses/android-sdk-preview-license
+
+          # Kerakli SDK komponentlarini o'rnatish
+          yes | $SDK/tools/bin/sdkmanager --sdk_root=$SDK \
+            "platform-tools" \
+            "build-tools;33.0.2" \
+            "platforms;android-33"
 
       - uses: actions/cache@v4
         with:
           path: ~/.buildozer
-          key: ${{ runner.os }}-buildozer-v3
+          key: ${{ runner.os }}-buildozer-v4
 
       - name: APK build
-        run: yes | buildozer android debug
+        run: buildozer android debug
 
       - uses: actions/upload-artifact@v4
         with:
