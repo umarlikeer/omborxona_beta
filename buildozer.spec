@@ -6,7 +6,7 @@ source.dir = .
 source.include_exts = py,png,jpg,jpeg,kv,atlas
 version = 0.1
 
-requirements = python3==3.11.6,kivy==2.3.0,kivymd==1.1.1,pillow,plyer
+requirements = python3==3.11.6,hostpython3==3.11.6,kivy==2.3.0,kivymd==1.1.1,pillow,plyer
 
 orientation = portrait
 fullscreen = 0
@@ -14,7 +14,6 @@ fullscreen = 0
 android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
 android.api = 33
 android.minapi = 21
-android.ndk = 25b
 android.archs = arm64-v8a
 android.accept_sdk_license = True
 
