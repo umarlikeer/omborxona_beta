@@ -9,10 +9,34 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # TUZATILDI: JDK 17 to'g'ri o'rnatiladigan qilindi
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      # TUZATILDI: Eski keshdan qolgan xatoliklarni tozalash bosqichi qo'shildi
+      - name: Clean Buildozer Cache
+        run: |
+          rm -rf ~/.buildozer
+          rm -rf .buildozer
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install buildozer cython gitpython
+
+      - name: Build Android APK
+        run: |
+          buildozer android debug

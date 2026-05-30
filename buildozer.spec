@@ -6,12 +6,10 @@ source.dir = .
 source.include_exts = py,png,jpg,jpeg,kv,atlas
 version = 0.1
 
-# 1-MUHIM O'ZGARISH: Agar loyihangizda KivyMD ishlatilgan bo'lsa, uni requirements'ga qo'shish shart!
-# Agar ishlatilmagan bo'lsa ham, material elementlar xato bermasligi uchun quyidagicha yozing:
-requirements = python3, kivy==2.2.1, kivymd, plyer
+# TUZATILDI: Kivy va KivyMD yangi versiyaga o'tkazildi (config.pxi xatosi bartaraf etildi)
+requirements = python3, kivy==2.3.0, kivymd==1.2.0, plyer
 
-# 2-MUHIM O'ZGARISH: NDK va API mosligini ta'minlash
-# Android API versiyalarini to'g'rilang
+# TUZATILDI: minSdkVersion va ndk_api versiyalari 24 ga ko'tarildi
 android.api = 33
 android.minapi = 24
 android.ndk = 25b
@@ -20,7 +18,7 @@ android.ndk_api = 24
 orientation = portrait
 fullscreen = 0
 
-android.permissions = READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
+android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
 android.archs = arm64-v8a
 android.accept_sdk_license = True
 
