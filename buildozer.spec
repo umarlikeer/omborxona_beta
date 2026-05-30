@@ -1,22 +1,25 @@
 [app]
-title = Omborxona
+title = omborxona
 package.name = omborxona
 package.domain = org.omborxona
 source.dir = .
 source.include_exts = py,png,jpg,jpeg,kv,atlas
 version = 0.1
 
-# requirements ichida kivy-ios bo'lmasligi kerak!
-requirements = python3, kivy==2.2.1, plyer
+# 1-MUHIM O'ZGARISH: Agar loyihangizda KivyMD ishlatilgan bo'lsa, uni requirements'ga qo'shish shart!
+# Agar ishlatilmagan bo'lsa ham, material elementlar xato bermasligi uchun quyidagicha yozing:
+requirements = python3, kivy==2.2.1, kivymd, plyer
 
-# Android API versiyalarini to'g'rilang
+# 2-MUHIM O'ZGARISH: NDK va API mosligini ta'minlash
 android.api = 33
 android.minapi = 21
 android.ndk = 25b
+android.ndk_api = 21
+
 orientation = portrait
 fullscreen = 0
 
-android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
+android.permissions = READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
 android.archs = arm64-v8a
 android.accept_sdk_license = True
 
