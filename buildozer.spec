@@ -6,8 +6,8 @@ source.dir = .
 source.include_exts = py,png,jpg,jpeg,kv,atlas
 version = 0.1
 
-# TUZATILDI: Kivy va KivyMD yangi versiyaga o'tkazildi (config.pxi xatosi bartaraf etildi)
-requirements = python3, kivy==2.3.0, kivymd==1.2.0, plyer
+# buildozer.spec ichidagi requirements qatorini topib, bunga almashtiring:
+requirements = python3.11, kivy==2.3.0, kivymd==1.2.0, plyer
 
 # TUZATILDI: minSdkVersion va ndk_api versiyalari 24 ga ko'tarildi
 android.api = 33
