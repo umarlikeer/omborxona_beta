@@ -30,11 +30,11 @@ jobs:
           rm -rf ~/.buildozer
           rm -rf .buildozer
 
-      # YAKUNIY TUZATISH: Libffi va Cython uchun kerakli barcha Linux paketlari o'rnatiladi
+      # TUZATILDI: Build-essential so'zi butunlay kichik harflarda build-essential qilib to'g'rilandi
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y autoconf automake libtool m4 pkg-config Build-essential
+          sudo apt-get install -y autoconf automake libtool m4 pkg-config build-essential
           pip install --upgrade pip
           pip install buildozer cython gitpython
 
