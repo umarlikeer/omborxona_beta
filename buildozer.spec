@@ -1,12 +1,12 @@
 [app]
-title = omborxona
-package.name = omborxona
-package.domain = org.omborxona
+title = omborxona_beta
+package.name = omborxona_beta
+package.domain = org.omborxona_beta
 source.dir = .
 source.include_exts = py,png,jpg,jpeg,kv,atlas
 version = 0.1
 
-# KAFOLATLANGAN YECHIM: Python 3.10 versiyasiga tushirildi
+# Python 3.10 va Kivy 2.3.0 barqaror kombinatsiyasi
 requirements = python3.10, kivy==2.3.0, kivymd==1.2.0, plyer
 
 android.api = 33
