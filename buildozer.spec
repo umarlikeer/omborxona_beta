@@ -6,8 +6,8 @@ source.dir = .
 source.include_exts = py,png,jpg,jpeg,kv,atlas
 version = 0.1
 
-# YAKUNIY TUZATISH: Python 3.11 va Kivy 2.3.0 mosligi ta'minlandi
-requirements = python3.11, kivy==2.3.0, kivymd==1.2.0, plyer
+# KAFOLATLANGAN YECHIM: Python 3.10 versiyasiga tushirildi
+requirements = python3.10, kivy==2.3.0, kivymd==1.2.0, plyer
 
 android.api = 33
 android.minapi = 24
