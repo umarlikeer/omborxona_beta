@@ -6,10 +6,9 @@ source.dir = .
 source.include_exts = py,png,jpg,jpeg,kv,atlas
 version = 0.1
 
-# buildozer.spec ichidagi requirements qatorini topib, bunga almashtiring:
+# YAKUNIY TUZATISH: Python 3.11 va Kivy 2.3.0 mosligi ta'minlandi
 requirements = python3.11, kivy==2.3.0, kivymd==1.2.0, plyer
 
-# TUZATILDI: minSdkVersion va ndk_api versiyalari 24 ga ko'tarildi
 android.api = 33
 android.minapi = 24
 android.ndk = 25b

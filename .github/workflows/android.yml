@@ -23,18 +23,18 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Clean Buildozer Cache
         run: |
           rm -rf ~/.buildozer
           rm -rf .buildozer
 
-      # TUZATILDI: Linux tizim paketlari (autotools, libtool) qo'shildi
+      # YAKUNIY TUZATISH: Libffi va Cython uchun kerakli barcha Linux paketlari o'rnatiladi
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y autoconf automake libtool pkg-config
+          sudo apt-get install -y autoconf automake libtool m4 pkg-config Build-essential
           pip install --upgrade pip
           pip install buildozer cython gitpython
 
